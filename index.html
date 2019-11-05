@@ -5,8 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lel</title>
+    
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1 class="h1 nadpis">Hello World</h1>
+    <div id="container">
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var bodyStranky;
+
+            //odchytavanie el
+            document.querySelector('body');
+            document.getElementById('body');
+            document.getElementsByClassName('body');
+            document.getElementsByTagName('body');
+            document.querySelectorAll('body');
+
+            //changing elements
+            var h1 = document.querySelector('h1');
+            h1.textContent = 'Poop';
+            h1.innerHTML = '<span style="color:red">Poop2<span>';
+
+            //creating new element
+            var container = document.getElementById('container');
+            var createdH2 = document.createElement('H2'); //1
+            createdH2.textContent = 'Piss';
+            container.appendChild(createdH2);
+
+            //Adding classes on elements
+            let h1Element = document.getElementsByTagName('h1')[0];   
+            h1Element.classList //vylistujes classy
+            h1Element.classList.add('dolezity-nadpis');
+            h1Element.classList.remove('dolezity-nadpis');
+            h1Element.classList.replace('nadpis', 'dolezity-nadpis');
+            h1Element.classList.toggle('nadpis');
+        })
+    </script>
 </body>
 </html>
