@@ -14,7 +14,56 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
-            var bodyStranky;
+            //defining of variables
+
+            /*
+            var - variable - old way for creating variables
+            let - ??? - new way for creating variables
+            const - constant - variable that cannot be overwritten one it's created
+            */
+
+            //variable types
+
+            //Number (can be used with mathematical operators)
+            let nuber1 = 1;
+            let nuber2 = 1;
+            let sum = number1 + number2;
+
+            //String (used for text)
+            //to create string you just wrap the text to quotes [', ", `]
+            let string1 = 'Poop';
+            let string2 = "Piss";
+            let string3 = `Vomit`;
+
+            //strings can be added together with mathematical operator +
+            let stringyString = string1 + string2 + string3; //returns - PoopPissVomit
+            let stringyStringWithSpaces = string1 +' '+ string2 +' '+ string3; //returns - Poop Piss Vomit
+
+            //Array - used for storing multiple variables of multiple types
+            let myArray = [3, 'eleven', ['six', 6], {name: 'Martin'}];
+            //To get exact value from array you just type name of variable containing array and index of it (note that index starts with 0)
+            let elevenFromArray = array[1]; //returns 'eleven'
+            let sixFromArrayInArray = elevenFromArray = array[2][0]; //returns 'six'
+
+            //Object - used for storing multiple variables of multiple types + functions, each variable has assigned name to it
+            let myObject = {
+                name: 'Martin',
+                surename: 'Kocisek',
+                age: 10
+            };
+
+            //To get exact value from object you just type name of variable containing object and name of it
+            myObject.name; //returns 'Martin'
+            myObject.age; //returns 10
+
+            //Boolean - true/false states, will use later a lot, look for it in MDN if ur curious
+            let logicalTrue = true;
+            let logicalFalse = false;
+
+
+            //Working with page
+            
+            var bodyStranky; //variables can be created empty
 
             //odchytavanie el
             document.querySelector('body');
