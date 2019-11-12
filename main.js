@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function(){
         novyDiv.appendChild(novyText);
         container.appendChild(novyDiv);
     }
+    let divy = document.getElementsByClassName('box');
 
     for (let i = 0; i < divy.length; i++) {
         rnd1 = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
