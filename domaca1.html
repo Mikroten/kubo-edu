@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Domaca1</title>
+</head>
+<body>
+    <header id="Nadpisy">
+    </header>    
+</body>
+<script>
+    for(let i = 1; i <= 10; i++)
+    {
+        var novyText = document.createElement('p');
+        novyText.textContent = 'Nadpis cislo ' + i;
+        
+        switch(i)
+        {
+            case 3:
+                novyText.style.color = 'red';
+                break;
+            case 5:
+                novyText.style.fontFamily = "arial";
+                break;
+            case 10:
+                novyText.textContent = "Thats all folks";
+        }
+        Nadpisy.appendChild(novyText);
+    }
+</script>
+</html>
