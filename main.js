@@ -158,4 +158,104 @@ document.addEventListener('DOMContentLoaded', function(){
         divy[i].style.backgroundColor = 'rgb(' + rnd1 +',' + rnd2 +',' + rnd3 +')';
     }
 
+        //Functions
+
+        //anonymous function - yffy
+        (function(){
+            console.log('lel');
+        })()
+
+        //normal function
+        function spocitajCisla(){
+            console.log('2+3');
+        }
+
+        //funck
+        function spocitajCislaAVratIch(){
+            return 2+2;
+        }
+        var stvorka = 4;
+
+        //
+        var spocitaneCisla = spocitajCislaAVratIch();
+        console.log(spocitaneCisla);
+
+        function lel(a){
+            return a+a;
+        }
+
+        function obsahStvoreca(dlzkaStrany = 5){
+            let obsahStvoreca = dlzkaStrany*dlzkaStrany;
+            var sestka = lel(3);
+            return obsahStvoreca + ' '+ sestka;
+        }
+
+        /**
+         * Vypise clanok o pipiku
+         * @param {string} textNadpisu Napis co bude h1
+         * @param {string} textPodnadpisu podnaspis co bude h4
+         * @param {string} textText normalny text
+         */
+        
+        function vygenerujClanok(textNadpisu = 'Nadpis', textPodnadpisu, textText = 'Ziadny text'){
+            var clankovyContainer = document.getElementById('clanky');
+            var clanok = document.createElement('div');
+            var nadpis = document.createElement('h1');
+            var podnadpis = document.createElement('h4');
+            var text = document.createElement('p');
+            
+            nadpis.textContent = textNadpisu;
+            podnadpis.textContent = textPodnadpisu;
+            text.textContent = textText;
+
+            clanok.appendChild(nadpis);
+            clanok.appendChild(podnadpis);
+            clanok.appendChild(text);
+
+            clankovyContainer.appendChild(clanok);
+        }
+
+        vygenerujClanok('Pipik', 'Pipik ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+        vygenerujClanok('Pipik2', 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+
+        //Eventy
+        // document.getElementById('stukButton').addEventListener('click', function(){
+        //     vygenerujClanok('nadpis');
+        // });
+
+        // document.getElementById('stukButton').onclick = function(){
+        //     vygenerujClanok('nadpis');
+        // };
+
+        // document.getElementById('stukButton').addEventListener('keyPress', function(){
+        //     vygenerujClanok('nadpis');
+        // });
+
+        //Event details
+        document.addEventListener('keypress', function(e){
+            if(e.key === 'Enter'){
+                vygenerujClanok(vypisPipik(), 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+            }
+        });
+
+
+        var pocetPipikov = 0;
+
+        function vypisPipik(){
+            pocetPipikov++;
+            return 'Pipik' + String(pocetPipikov);
+        }
+
+        document.getElementById('form').addEventListener('submit', function(e){
+            var inputText = document.querySelector('input[name="meno"]').value;
+            if(inputText === ''){
+                e.preventDefault();
+                document.getElementById('errorMessage').textContent = 'Ur retarded!'
+            }else{
+                e.preventDefault();
+                document.getElementById('errorMessage').textContent = 'Si napisal ze ' +inputText;
+                document.querySelector('input[name="meno"]').value = '';
+            }
+        });
+
 })
