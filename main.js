@@ -158,104 +158,112 @@ document.addEventListener('DOMContentLoaded', function(){
         divy[i].style.backgroundColor = 'rgb(' + rnd1 +',' + rnd2 +',' + rnd3 +')';
     }
 
-        //Functions
+    //Functions - znovupouzitelne bloky kodu
 
-        //anonymous function - yffy
-        (function(){
-            console.log('lel');
-        })()
+    //anonymous function - funkcia ktora vola sama seba hned ako pride na rad
+    (function(){
+        console.log('lel');
+    })()
 
-        //normal function
-        function spocitajCisla(){
-            console.log('2+3');
-        }
+    //normal function - ma meno, na jej spustenie ju treba zavolat
+    function spocitajCisla(){
+        console.log('2+3');
+    }
 
-        //funck
-        function spocitajCislaAVratIch(){
-            return 2+2;
-        }
-        var stvorka = 4;
+    //return function - niekedy potrebujes pouzit vysledok funkcie, v tomto pripade sa pouziva return
+    function spocitajCislaAVratIch(){
+        return 2+2;
+    }
+    var stvorka = spocitajCislaAVratIch(); //4
 
-        //
-        var spocitaneCisla = spocitajCislaAVratIch();
-        console.log(spocitaneCisla);
+    // funkcie mozu mat parametre, ktore do nej posles tym ze ich vloziz do zatvorky, sluzia ako premenne pouzitelne iba
+    // vo funkcii, ked funkcia skonci vymazu sa
+    function lel(a){
+        return a+a;
+    }
 
-        function lel(a){
-            return a+a;
-        }
+    //parametre mozu mat aj defaultnu hodnotu ak by sa vyskytol pripad ze mu ziadnu neposles
+    function obsahStvoreca(dlzkaStrany = 5){
+        let obsahStvoreca = dlzkaStrany*dlzkaStrany;
+        var sestka = lel(3);
+        return obsahStvoreca + ' '+ sestka;
+    }
 
-        function obsahStvoreca(dlzkaStrany = 5){
-            let obsahStvoreca = dlzkaStrany*dlzkaStrany;
-            var sestka = lel(3);
-            return obsahStvoreca + ' '+ sestka;
-        }
 
-        /**
-         * Vypise clanok o pipiku
-         * @param {string} textNadpisu Napis co bude h1
-         * @param {string} textPodnadpisu podnaspis co bude h4
-         * @param {string} textText normalny text
-         */
+    //high-level komentovanie funkcii
+    /**
+     * Vypise clanok o pipiku
+     * @param {string} textNadpisu Napis co bude h1
+     * @param {string} textPodnadpisu podnaspis co bude h4
+     * @param {string} textText normalny text
+     */
+    
+    function vygenerujClanok(textNadpisu = 'Nadpis', textPodnadpisu, textText = 'Ziadny text'){
+        var clankovyContainer = document.getElementById('clanky');
+        var clanok = document.createElement('div');
+        var nadpis = document.createElement('h1');
+        var podnadpis = document.createElement('h4');
+        var text = document.createElement('p');
         
-        function vygenerujClanok(textNadpisu = 'Nadpis', textPodnadpisu, textText = 'Ziadny text'){
-            var clankovyContainer = document.getElementById('clanky');
-            var clanok = document.createElement('div');
-            var nadpis = document.createElement('h1');
-            var podnadpis = document.createElement('h4');
-            var text = document.createElement('p');
-            
-            nadpis.textContent = textNadpisu;
-            podnadpis.textContent = textPodnadpisu;
-            text.textContent = textText;
+        nadpis.textContent = textNadpisu;
+        podnadpis.textContent = textPodnadpisu;
+        text.textContent = textText;
 
-            clanok.appendChild(nadpis);
-            clanok.appendChild(podnadpis);
-            clanok.appendChild(text);
+        clanok.appendChild(nadpis);
+        clanok.appendChild(podnadpis);
+        clanok.appendChild(text);
 
-            clankovyContainer.appendChild(clanok);
+        clankovyContainer.appendChild(clanok);
+    }
+
+    vygenerujClanok('Pipik', 'Pipik ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+    vygenerujClanok('Pipik2', 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+
+    //Eventy
+    //klasicke pouzitie eventListeneru, musi mat 2 parametre, nazov eventu ktory sledujes a anonymnu funkciu v ktorej
+    //mas kod ktory chces zavolat 
+
+    // document.getElementById('stukButton').addEventListener('click', function(){
+    //     vygenerujClanok('nadpis');
+    // });
+
+
+    //on[something] eventy - su to skratene eventlistenery, aby si nemusel tolko pisat
+    // document.getElementById('stukButton').onclick = function(){
+    //     vygenerujClanok('nadpis');
+    // };
+
+    //vsetky eventy najdes tu - https://developer.mozilla.org/en-US/docs/Web/Events (neuc sa ich, zatial ti staci click, DOMContentLoaded, keypress, mouseenter, mouseleave, mouseover, input a chnage - vacsinu z nich preberieme neskor)
+
+    //Event details - ak chceme vedie info o evente pouzivame ako parameter anonymnej funkcie [e, evt, event]
+    // v nej je vela info o tom co sa dialo ked sa pozadovany event stal a vies s nimi pracovat
+    document.addEventListener('keypress', function(e){
+        if(e.key === 'Enter'){ //zisti ci bol stlaceny enter
+            vygenerujClanok(vypisPipik(), 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
         }
+    });
 
-        vygenerujClanok('Pipik', 'Pipik ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
-        vygenerujClanok('Pipik2', 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
+    
+    // var pocetPipikov = 0;
 
-        //Eventy
-        // document.getElementById('stukButton').addEventListener('click', function(){
-        //     vygenerujClanok('nadpis');
-        // });
+    // function vypisPipik(){
+    //     pocetPipikov++;
+    //     return 'Pipik' + String(pocetPipikov);
+    // }
 
-        // document.getElementById('stukButton').onclick = function(){
-        //     vygenerujClanok('nadpis');
-        // };
-
-        // document.getElementById('stukButton').addEventListener('keyPress', function(){
-        //     vygenerujClanok('nadpis');
-        // });
-
-        //Event details
-        document.addEventListener('keypress', function(e){
-            if(e.key === 'Enter'){
-                vygenerujClanok(vypisPipik(), 'Pipik2 ma liecive ucinky', 'Cupcake muffin chocolate bar gummi bears liquorice candy bear claw sesame snaps. Dragée wafer lemon drops donut. Cake cheesecake marzipan.');
-            }
-        });
-
-
-        var pocetPipikov = 0;
-
-        function vypisPipik(){
-            pocetPipikov++;
-            return 'Pipik' + String(pocetPipikov);
+    //e.preventDefault();
+    //preventdefault sa pouziva ak chceme zastavit defaultne spravanie elementu, v tomto pripade zastavenie odoslania formularu
+    //dalsie vyuzitie moze byt zastavenie linky pred presmerovanim na inu stranku
+    document.getElementById('form').addEventListener('submit', function(e){
+        var inputText = document.querySelector('input[name="meno"]').value;
+        if(inputText === ''){
+            e.preventDefault();
+            document.getElementById('errorMessage').textContent = 'Ur retarded!'
+        }else{
+            e.preventDefault();
+            document.getElementById('errorMessage').textContent = 'Si napisal ze ' +inputText;
+            document.querySelector('input[name="meno"]').value = '';
         }
-
-        document.getElementById('form').addEventListener('submit', function(e){
-            var inputText = document.querySelector('input[name="meno"]').value;
-            if(inputText === ''){
-                e.preventDefault();
-                document.getElementById('errorMessage').textContent = 'Ur retarded!'
-            }else{
-                e.preventDefault();
-                document.getElementById('errorMessage').textContent = 'Si napisal ze ' +inputText;
-                document.querySelector('input[name="meno"]').value = '';
-            }
-        });
+    });
 
 })
