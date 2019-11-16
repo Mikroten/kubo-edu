@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Domaca2</title>
+    </head>
+    <body>
+    
+    
+    <form action="" id='form'>
+            <input type="text" name="nadpis" id="" placeholder="Nadpis">
+            <input type="text" name="podnadpis" id="" placeholder="Podnadpis">
+            <input type="text" name="text" id="" placeholder="Text">
+            <input type="number" name="gotchaBitch" id="" placeholder=>
+            <input type="submit" value="Submit" id="submit">
+            
+            <p id="errorMessage"></p>
+            <h1 id="header"></h1>
+            <h4 id="subheader"></h4>
+            <p id="samotnyText"></p>
+    </form>
+
+    <script>
+
+        document.getElementById('form').addEventListener('submit', function(e)
+        {
+            var inputNadpis = document.querySelector('input[name="nadpis"]').value;
+            var inputPodnadpis = document.querySelector('input[name="podnadpis"]').value;
+            var inputText = document.querySelector('input[name="text"]').value;
+            if(inputNadpis == '' || inputPodnadpis == '' || inputText == '')
+            {
+                e.preventDefault();
+                document.getElementById('errorMessage').textContent = 'Fill in the blanks, cunt!'
+            }
+            else
+            {
+                e.preventDefault();
+                document.getElementById('header').textContent = inputNadpis;
+                document.getElementById('subheader').textContent = inputPodnadpis;
+                document.getElementById('samotnyText').textContent = inputText;
+                document.getElementById('errorMessage').textContent = "";
+                document.querySelector('input[name="nadpis"]').value = '';
+                document.querySelector('input[name="podnadpis"]').value = '';
+                document.querySelector('input[name="text"]').value = '';
+            }
+        }
+        );
+    </script>
+
+    </body>
+</html>
