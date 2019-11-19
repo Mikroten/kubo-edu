@@ -41,7 +41,6 @@
                 document.getElementById('header').textContent = inputNadpis;
                 document.getElementById('subheader').textContent = inputPodnadpis;
                 document.getElementById('samotnyText').textContent = inputText;
-                document.getElementById('captcha').textContent
                 document.getElementById('errorMessage').textContent = "";
                 document.querySelector('input[name="nadpis"]').value = '';
                 document.querySelector('input[name="podnadpis"]').value = '';
@@ -52,6 +51,9 @@
             {
                 e.preventDefault();
                 document.getElementById('errorMessage').textContent = 'Fill in the blanks, cunt!'
+                document.getElementById('header').textContent = "";
+                document.getElementById('subheader').textContent = "";
+                document.getElementById('samotnyText').textContent = "";
             }
         }
         );
