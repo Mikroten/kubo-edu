@@ -22,15 +22,17 @@
     
 
     <script>
+            
+            var genCaptcha1 = Math.floor(Math.random() * 10);
+            var genCaptcha2 = Math.floor(Math.random() * 10);
+            var vysledokCaptcha = genCaptcha1 + genCaptcha2; 
+            var printCaptcha = document.getElementById("captcha").textContent = genCaptcha1 + "+" + genCaptcha2;
+
         document.getElementById('form').addEventListener('submit', function(e)
         {
             var inputNadpis = document.querySelector('input[name="nadpis"]').value;
             var inputPodnadpis = document.querySelector('input[name="podnadpis"]').value;
             var inputText = document.querySelector('input[name="text"]').value;
-            var genCaptcha1 = Math.floor(Math.random() * 10);
-            var genCaptcha2 = Math.floor(Math.random() * 10);
-            var vysledokCaptcha = genCaptcha1 + genCaptcha2; 
-            var printCaptcha = document.getElementById("captcha").textContent = genCaptcha1 + "+" + genCaptcha2;
             var inputCaptcha = document.querySelector('input[name="gotchaBitch"]').value;
 
             if((inputNadpis != '' || inputPodnadpis != '' || inputText != '') && (inputCaptcha == vysledokCaptcha))
