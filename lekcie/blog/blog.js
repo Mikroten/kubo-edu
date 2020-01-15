@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //indexOf
     ovocie[ovocie.indexOf('banan')]; //zisti index stringu v poli
 
-    //find - prebehne cez kazdy elemnt v poli s tym ze pouzima logicke operatory
+    //find - prebehne cez kazdy elemnt v poli s tym ze pouziva logicke operatory
     const array1 = [5, 12, 8, 130, 44];
     let prvecloVacsieAkoDesatVTomtoErei = array1.find(function(element){
         return element > 10;
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var miestoPreClanky = document.getElementById('container');
 
     //JSON
-    //JSON.stringify - ulozi do stringu v JSON fomate
+    //JSON.stringify - ulozi do stringu v JSON formate
     //JSON.parse - vybuduje z JSON stringu povodnu hodnotu
 
     //vyberie z localstorage hodnotu ulozenu pod menom clanky a spravi JSON parse 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     //funkcia ktora zozerie array plny objektov(clankov) a vygeneruje ich na stranke
     function vygenerujClanky(arr1){
-        //foreach prebehne cez kazdy hodnotu v poli, pouziva na to v tomto pripade slovo 'clanok'
+        //forEach prebehne cez kazdu hodnotu v poli, pouziva na to v tomto pripade slovo 'clanok'
         //co je vlastne index elementu v arrayi na ktorom je
         arr1.forEach(function(clanok){
             var samotnyClanok = document.createElement('div');
